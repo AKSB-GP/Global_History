@@ -1,0 +1,445 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	font-family: Neue Haas Grotesk Display Pro, Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	font-size: 2vw;
+	line-height: 1;
+	box-sizing: border-box;
+}
+
+body {
+	background: linear-gradient(to right, #e0e0e0, #f1f1f1);
+	margin: 0;
+	overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+p {
+	padding-bottom: 10px;
+}
+
+.dark {
+	background: linear-gradient(to right, #50579b, #7c7acf);
+	color: #ffffff; /* White text color */
+}
+
+.dark h1 {
+	color: #fff;
+}
+
+.body {
+	height: 200vh;
+	width: 100vw;
+	display: grid;
+	grid-template-columns: 25% 75%;
+	grid-template-rows: 60px 6.25% calc(35.5% - 60px) 4.25% 60px 100vh;
+	grid-template-areas:
+		'background background'
+		'header header'
+		'year globe'
+		'timeline timeline'
+		'space space'
+		'list list';
+	position: relative;
+	top: 0;
+	z-index: 0;
+
+	/*   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+button {
+	background-color: #ff5e2b;
+	color: #fff;
+	width: fit-content;
+	height: 32px;
+	padding: 5px 15px;
+	flex-shrink: 0;
+	border-radius: 50px;
+	margin-bottom: 5px;
+	font-size: 10pt;
+	font-weight: 400;
+	line-height: 1;
+}
+
+.dark button {
+	background-color: #231e41;
+}
+
+code {
+	/* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
+}
+
+.background {
+	grid-area: background;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	background: linear-gradient(to right, #e0e0e0, #f1f1f1);
+	z-index: 3;
+	position: sticky;
+}
+
+.dark .background {
+	background: linear-gradient(to right, #50579b, #7c7acf);
+}
+
+.headerDiv {
+	grid-area: header;
+	width: 100%;
+	position: sticky;
+	top: 60px;
+	display: flex;
+	align-items: center;
+	background: linear-gradient(to right, #e0e0e0, #f1f1f1);
+	padding: 0 60px 0 60px;
+}
+
+.dark .headerDiv {
+	background: linear-gradient(to right, #50579b, #7c7acf);
+	z-index: 3;
+}
+
+.headerContainer {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	z-index: 3;
+}
+
+.niceButtons {
+	width: fit-content;
+	display: flex;
+	flex-direction: column;
+	justify-items: end;
+	align-items: center;
+}
+
+.loginButton {
+	grid-area: login;
+	margin-top: -4px;
+	width: 100%;
+  justify-self: end;
+}
+
+.sun {
+	grid-area: sun;
+	height: 30px;
+	width: 30px;
+	margin: 0 10px;
+}
+
+.lightDark {
+	grid-area: lightdark;
+	position: relative;
+	display: inline-block;
+	width: 50px;
+	height: 25px;
+	margin: 5px 0;
+}
+
+.lightDark input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+/*box dark mode*/
+.circle {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: -5px;
+	background-color: #ff5e2b;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	border-radius: 30px;
+}
+
+/*circle dark mode*/
+.circle:before {
+	position: absolute;
+	content: '';
+	height: 22px;
+	width: 22px;
+	right: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	border-radius: 50%;
+}
+
+/*box light mode*/
+input:checked + .circle {
+	background-color: #231e41;
+}
+
+/*circle light mode*/
+input:checked + .circle:before {
+	-webkit-transform: translateX(-20px);
+	-ms-transform: translateX(-20px);
+	transform: translateX(-20px);
+}
+
+.logo {
+	font-size: 2.5vw;
+	width: 400px;
+}
+
+.parallaxYear {
+	grid-area: year;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	z-index: 0;
+	padding: 0 0 0 60px;
+}
+
+.yearTextDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+}
+
+.year {
+	color: #000;
+	font-family: Neue Haas Grotesk Display Pro, Arial, Helvetica, sans-serif, 500;
+	font-size: 10vw;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 0.9;
+}
+
+.globeDiv {
+	grid-area: globe;
+	height: 100%;
+	width: 60%;
+	overflow-y: hidden;
+	top: 20%;
+	position: sticky;
+	display: flex;
+	justify-self: end;
+	margin-right: 5vw;
+	padding-bottom: 20px;
+	z-index: 0;
+	padding: 0 60px 0 0;
+}
+
+.globePresenter {
+	height: 100%;
+	width: 100%;
+}
+
+.globeView {
+	height: 100%;
+	width: 100%;
+	/* position: fixed; */
+}
+
+.dark .globeView {
+	filter: hue-rotate(167deg) brightness(90%);
+}
+
+.help {
+  justify-self: end;
+}
+
+.helpBox {
+	position: absolute;
+	top: 12vh;
+  left: 50%; /* Set left to 50% */
+  transform: translateX(-50%);
+  height: fit-content;
+  width: 50vw;
+	border-radius: 50px;
+	padding: 30px;
+	color: #000;
+	border: 2px solid #ff5e2b;
+	background-color: #f1f1f1;
+	box-shadow: -2px -2px 20px 2px #fff,
+		2px 2px 20px 2px rgba(171, 171, 171, 0.81);
+}
+
+.helpBox p {
+	font-size: 1.5vw;
+  
+	text-align: center;
+	color: rgb(0, 0, 0);
+}
+
+.dark .helpBox {
+  position: absolute;
+	top: 12vh;
+  left: 50%; /* Set left to 50% */
+  transform: translateX(-50%);
+  height: fit-content;
+  width: 50vw;
+	border-radius: 50px;
+	padding: 30px;
+	border: 2px solid #231e41;
+	background-color: #7c7acf;
+	box-shadow: -2px -2px 20px 2px #8a89e7,
+		2px 2px 20px 2px rgba(67, 52, 128, 0.81);
+}
+
+.dark .helpBox p {
+	color: rgb(255, 255, 255);
+}
+
+.exitHelp:hover {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.firstMenuRow,
+.secondMenuRow {
+	display: flex;
+	align-items: center;
+}
+
+.firstMenuRow button {
+	margin-left: 10px;
+}
+
+.secondMenuRow {
+	margin-left: 120px;
+}
+
+.parallaxTimeline {
+	grid-area: timeline;
+	z-index: 0;
+	padding: 0 60px 0 60px;
+}
+
+.timelineDiv {
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+}
+
+.timeline {
+	justify-self: center;
+	align-self: center;
+	width: 100%;
+	height: fit-content;
+}
+
+.years {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.yearItem {
+	width: fit-content;
+	margin: 0 -5px;
+	font-size: 3vh;
+}
+
+.parallaxList {
+	grid-area: list;
+	height: 100vh;
+	z-index: 0;
+	padding: 0 60px 0 60px;
+}
+
+/* globeDiv width 100% on phone */
+@media only screen and (max-width: 600px) {
+  .body {
+    height: 200vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 30px 6.25% calc(35.5% - 60px) 4.25% 30px 100vh;
+    grid-template-areas:
+      'background background'
+      'header header'
+      'year globe'
+      'timeline timeline'
+      'space space'
+      'list list';
+    position: relative;
+    top: 0;
+    z-index: 0;
+  }
+
+  button {
+    background-color: #ff5e2b;
+    color: #fff;
+    width: fit-content;
+    height: 25px;
+    padding: 5px 15px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    margin-bottom: 5px;
+    font-size: 2vw;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+	.globeDiv {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100vw; /* Adjust this as needed */
+		margin-right: 0;
+		padding: 0;
+	}
+	.globePresenter {
+		max-width: 100%;
+		width: auto;
+	}
+
+	.globeView {
+		height: 100%;
+		max-width: 100%;
+		width: auto;
+	}
+  
+	.loginButton {
+		width: 140px;
+		margin-top: 0px;
+	}
+
+	.yearTextDiv {
+		margin-bottom: -40px;
+		pointer-events: none;
+		width: 200px;
+	}
+
+	.yearTextDiv p {
+		font-size: 1.2rem;
+	}
+
+	.year {
+		margin-top: -8px;
+    size: 10vw;
+	}
+
+	.helpBox {
+		width: 80vw;
+		left: 10vw;
+	}
+
+	.helpBox p {
+		font-size: 20px;
+		max-width: 80vw;
+	}
+
+	.secondMenuRow {
+		margin-left: 100px;
+	}
+}
